@@ -255,7 +255,7 @@ function initRegistrationForm() {
 
   const fields = [
     "teamName", "captainName", "mobile", "whatsapp", "email",
-    "district", "players", "jersey", "experience", "notes"
+    "district", "players", "jersey", "notes"
   ];
 
   const validators = {
@@ -267,7 +267,6 @@ function initRegistrationForm() {
     district: (val) => val.trim().length >= 2 && val.trim().length <= 80 ? null : "District must be between 2 and 80 characters",
     players: (val) => /^\d{1,2}$/.test(val.trim()) ? null : "Enter number of players",
     jersey: (val) => val.trim().length >= 2 && val.trim().length <= 40 ? null : "Jersey color must be between 2 and 40 characters",
-    experience: (val) => val.trim().length <= 200 ? null : "Experience must be under 200 characters",
     notes: (val) => val.trim().length <= 500 ? null : "Notes must be under 500 characters"
   };
 
