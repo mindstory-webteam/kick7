@@ -254,20 +254,63 @@ function initRegistrationForm() {
   if (!form) return;
 
   const fields = [
-    "teamName", "captainName", "mobile", "whatsapp", "email",
-    "district", "players", "jersey", "notes"
+    "teamName",
+    "captainName",
+    "mobile",
+    "whatsapp",
+    "email",
+    "district",
+    "players",
+    "jersey",
+    "notes"
   ];
 
   const validators = {
-    teamName: (val) => val.trim().length >= 2 && val.trim().length <= 80 ? null : "Team name must be between 2 and 80 characters",
-    captainName: (val) => val.trim().length >= 2 && val.trim().length <= 80 ? null : "Captain name must be between 2 and 80 characters",
-    mobile: (val) => /^[0-9+\-\s]{7,15}$/.test(val.trim()) ? null : "Enter a valid mobile number",
-    whatsapp: (val) => /^[0-9+\-\s]{7,15}$/.test(val.trim()) ? null : "Enter a valid WhatsApp number",
-    email: (val) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) && val.trim().length <= 255 ? null : "Enter a valid email address",
-    district: (val) => val.trim().length >= 2 && val.trim().length <= 80 ? null : "District must be between 2 and 80 characters",
-    players: (val) => /^\d{1,2}$/.test(val.trim()) ? null : "Enter number of players",
-    jersey: (val) => val.trim().length >= 2 && val.trim().length <= 40 ? null : "Jersey color must be between 2 and 40 characters",
-    notes: (val) => val.trim().length <= 500 ? null : "Notes must be under 500 characters"
+    teamName: (val) =>
+      val.trim().length >= 2 && val.trim().length <= 80
+        ? null
+        : "Team name must be between 2 and 80 characters",
+
+    captainName: (val) =>
+      val.trim().length >= 2 && val.trim().length <= 80
+        ? null
+        : "Captain name must be between 2 and 80 characters",
+
+    mobile: (val) =>
+      /^[0-9+\-\s]{7,15}$/.test(val.trim())
+        ? null
+        : "Enter a valid mobile number",
+
+    whatsapp: (val) =>
+      /^[0-9+\-\s]{7,15}$/.test(val.trim())
+        ? null
+        : "Enter a valid WhatsApp number",
+
+    email: (val) =>
+      /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(val.trim()) &&
+      val.trim().length <= 255
+        ? null
+        : "Enter a valid email address",
+
+    district: (val) =>
+      val.trim().length >= 2 && val.trim().length <= 80
+        ? null
+        : "District must be between 2 and 80 characters",
+
+    players: (val) =>
+      /^\d{1,2}$/.test(val.trim())
+        ? null
+        : "Enter number of players",
+
+    jersey: (val) =>
+      val.trim().length >= 2 && val.trim().length <= 40
+        ? null
+        : "Jersey color must be between 2 and 40 characters",
+
+    notes: (val) =>
+      val.trim().length <= 500
+        ? null
+        : "Notes must be under 500 characters"
   };
 
   form.addEventListener("submit", (e) => {
@@ -276,13 +319,15 @@ function initRegistrationForm() {
     let hasErrors = false;
     const data = {};
 
-    // Run validation
-    fields.forEach(field => {
+    fields.forEach((field) => {
       const inputEl = document.getElementById(`form-${field}`);
       const errorEl = document.getElementById(`error-${field}`);
-      const val = inputEl.value;
 
+      if (!inputEl || !errorEl) return;
+
+      const val = inputEl.value;
       const errorMsg = validators[field](val);
+
       if (errorMsg) {
         hasErrors = true;
         errorEl.textContent = errorMsg;
@@ -300,7 +345,6 @@ function initRegistrationForm() {
       return;
     }
 
-    // WhatsApp redirection payload
     const message = `Hello Kick7 Super Cup Team,
 
 I would like to register for Kick7 Super Cup '26.
@@ -315,16 +359,26 @@ Players: ${data.players}
 Jersey Color: ${data.jersey}
 ${data.notes ? `Notes: ${data.notes}\n` : ""}
 
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
+Please contact us regarding registration.`;
+
+    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(
+      message
+    )}`;
+
     window.open(url, "_blank", "noopener,noreferrer");
-    showToast("Opening WhatsApp to complete your registration...", "success");
+    showToast(
+      "Opening WhatsApp to complete your registration...",
+      "success"
+    );
+
     form.reset();
   });
 
-  // Clear errors on typing
-  fields.forEach(field => {
+  fields.forEach((field) => {
     const inputEl = document.getElementById(`form-${field}`);
     const errorEl = document.getElementById(`error-${field}`);
+
+    if (!inputEl || !errorEl) return;
 
     inputEl.addEventListener("input", () => {
       errorEl.classList.add("hidden");
