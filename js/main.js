@@ -314,8 +314,7 @@ Email: ${data.email}
 District: ${data.district}
 Players: ${data.players}
 Jersey Color: ${data.jersey}
-${data.experience ? `Experience: ${data.experience}\n` : ""}${data.notes ? `Notes: ${data.notes}\n` : ""}
-Please contact us regarding registration.`;
+${data.notes ? `Notes: ${data.notes}\n` : ""}`;
 
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, "_blank", "noopener,noreferrer");
