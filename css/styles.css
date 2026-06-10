@@ -1461,6 +1461,7 @@ input, textarea, select { font-family: inherit; }
   letter-spacing: 0.25em;
   color: var(--muted-foreground);
   font-weight: 600;
+  margin: 0;
 }
 
 .sponsor-name {
@@ -1642,4 +1643,20 @@ footer {
    ============================================================ */
 @media (max-width: 768px) {
   .kick7-logo { height: 54px; }
+}
+.sponsor-card {
+  text-align: center;
+  padding: 2rem;
+}
+
+.sponsor-logo {
+  width: 140px;
+  height: 70px;
+  object-fit: contain;
+  margin: 0 auto 0 auto;
+  display: block;
+}
+
+.sponsor-name {
+  margin-top: 0.5rem;
 }
