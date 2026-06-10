@@ -722,9 +722,9 @@ input, textarea, select { font-family: inherit; }
    ============================================================ */
 .section {
   position: relative;
-  padding: 6rem 1.5rem;
+  padding: 2rem 1.5rem;
 }
-@media (min-width: 640px) { .section { padding: 5rem 1.5rem; } }
+@media (min-width: 640px) { .section { padding: 2rem 1.5rem; } }
 
 .section-beams {
   pointer-events: none;
