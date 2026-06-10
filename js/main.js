@@ -1,5 +1,5 @@
 // Constants
-const WHATSAPP_NUMBER = "919999999999";
+const WHATSAPP_NUMBER = "918281610051";
 const TARGET = new Date("2026-07-06T09:00:00+05:30").getTime();
 
 // DOM Ready
@@ -17,6 +17,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initFAQ();
   initRegistrationForm();
   initScrollAnimations();
+  initSmoothScroll();
 });
 
 // 1. Header Scroll effect
@@ -351,4 +352,33 @@ function initScrollAnimations() {
   document.querySelectorAll(".animate-on-scroll").forEach((el) => {
     observer.observe(el);
   });
+}
+// 11. Smooth scroll without URL hash
+function initSmoothScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(link => {
+    link.addEventListener("click", function (e) {
+      const href = this.getAttribute("href");
+
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+
+      if (target) {
+        e.preventDefault();
+
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+
+        // Remove hash from URL
+        history.replaceState(null, "", window.location.pathname);
+      }
+    });
+  });
+
+  // Remove hash if page loads with one
+  if (window.location.hash) {
+    history.replaceState(null, "", window.location.pathname);
+  }
 }
