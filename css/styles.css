@@ -14,55 +14,56 @@
 :root {
   --radius: 0.85rem;
 
-  --bg-1: #010B2E;
-  --bg-2: #031B5C;
-  --bg-3: #072B8A;
-  --primary-glow: #0066FF;
-  --electric: #2D8CFF;
-  --gold: #F5B400;
-  --gold-glow: #FFD54A;
-  --gold-foreground: #061B3A;
-  --navy-deep: #061B3A;
-  --navy: #003F8C;
+  /* ── Brand palette extracted from Kick7 Super Cup '26 logo ── */
+  --bg-1: #011228;
+  --bg-2: #002050;
+  --bg-3: #033161;
+  --primary-glow: #0595CE;
+  --electric: #026DA4;
+  --gold: #DCA428;
+  --gold-glow: #F0BB4A;
+  --gold-foreground: #002050;
+  --navy-deep: #002050;
+  --navy: #033161;
 
-  --background: #010B2E;
+  --background: #011228;
   --foreground: #FFFFFF;
 
   --card: rgba(255, 255, 255, 0.05);
   --card-foreground: #FFFFFF;
-  --popover: #061B3A;
+  --popover: #002050;
   --popover-foreground: #FFFFFF;
 
-  --primary: #0066FF;
+  --primary: #0595CE;
   --primary-foreground: #FFFFFF;
-  --secondary: #F5B400;
-  --secondary-foreground: #061B3A;
+  --secondary: #DCA428;
+  --secondary-foreground: #002050;
 
   --muted: rgba(255, 255, 255, 0.08);
   --muted-foreground: rgba(255, 255, 255, 0.72);
-  --accent: #FFD54A;
-  --accent-foreground: #061B3A;
+  --accent: #F0BB4A;
+  --accent-foreground: #002050;
   --destructive: #ef4444;
   --destructive-foreground: #FFFFFF;
 
   --border: rgba(255, 255, 255, 0.10);
   --input: rgba(255, 255, 255, 0.06);
-  --ring: #2D8CFF;
+  --ring: #026DA4;
 
-  --gradient-hero: radial-gradient(ellipse at 20% 0%, #072B8A 0%, transparent 55%),
-    radial-gradient(ellipse at 80% 100%, #031B5C 0%, transparent 55%),
-    linear-gradient(180deg, #010B2E 0%, #02103D 60%, #010B2E 100%);
-  --gradient-gold: linear-gradient(135deg, #F5B400 0%, #FFD54A 100%);
-  --gradient-navy: linear-gradient(135deg, #003F8C 0%, #061B3A 100%);
-  --gradient-text-gold: linear-gradient(180deg, #FFE48A 0%, #F5B400 100%);
-  --gradient-blue: linear-gradient(135deg, #0066FF 0%, #2D8CFF 60%, #072B8A 100%);
+  --gradient-hero: radial-gradient(ellipse at 20% 0%, #033161 0%, transparent 55%),
+    radial-gradient(ellipse at 80% 100%, #002050 0%, transparent 55%),
+    linear-gradient(180deg, #011228 0%, #021840 60%, #011228 100%);
+  --gradient-gold: linear-gradient(135deg, #DCA428 0%, #F0BB4A 100%);
+  --gradient-navy: linear-gradient(135deg, #033161 0%, #002050 100%);
+  --gradient-text-gold: linear-gradient(180deg, #F5CC6A 0%, #DCA428 100%);
+  --gradient-blue: linear-gradient(135deg, #0595CE 0%, #026DA4 60%, #033161 100%);
 
-  --shadow-gold: 0 0 50px rgba(245, 180, 0, 0.35), 0 10px 40px -10px rgba(255, 213, 74, 0.45);
-  --shadow-blue: 0 0 60px rgba(0, 102, 255, 0.28), 0 20px 60px -20px rgba(45, 140, 255, 0.45);
-  --shadow-navy: 0 20px 60px -20px rgba(3, 27, 92, 0.7);
+  --shadow-gold: 0 0 50px rgba(220, 164, 40, 0.35), 0 10px 40px -10px rgba(240, 187, 74, 0.45);
+  --shadow-blue: 0 0 60px rgba(5, 149, 206, 0.28), 0 20px 60px -20px rgba(2, 109, 164, 0.45);
+  --shadow-navy: 0 20px 60px -20px rgba(3, 49, 97, 0.7);
   --glass: rgba(255, 255, 255, 0.05);
   --glass-border: rgba(255, 255, 255, 0.08);
-  --glass-shadow: 0 0 40px rgba(0, 102, 255, 0.15);
+  --glass-shadow: 0 0 40px rgba(5, 149, 206, 0.15);
 
   --font-display: "Oswald", "Bebas Neue", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
@@ -85,11 +86,11 @@ body {
   font-family: var(--font-body);
   font-feature-settings: "ss01", "cv11";
   background-image:
-    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(0, 102, 255, 0.25), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 30%, rgba(45, 140, 255, 0.12), transparent 60%),
-    radial-gradient(ellipse 60% 50% at 10% 70%, rgba(7, 43, 138, 0.35), transparent 60%),
-    radial-gradient(ellipse at bottom, rgba(245, 180, 0, 0.06), transparent 60%),
-    linear-gradient(180deg, #010B2E 0%, #02103D 50%, #010B2E 100%);
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(5, 149, 206, 0.25), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 30%, rgba(2, 109, 164, 0.12), transparent 60%),
+    radial-gradient(ellipse 60% 50% at 10% 70%, rgba(3, 49, 97, 0.35), transparent 60%),
+    radial-gradient(ellipse at bottom, rgba(220, 164, 40, 0.06), transparent 60%),
+    linear-gradient(180deg, #011228 0%, #021840 50%, #011228 100%);
   background-attachment: fixed;
 }
 
@@ -1177,7 +1178,7 @@ select {
 .gallery-overlay {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, #010B2E, rgba(1, 11, 46, 0.3), transparent);
+  background: linear-gradient(to top, #011228, rgba(1, 18, 40, 0.3), transparent);
   opacity: 0.8;
   transition: opacity 0.3s;
 }
