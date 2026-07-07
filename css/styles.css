@@ -2419,3 +2419,118 @@ footer {
     padding: 16px;
   }
 }
+
+/* Daily Schedule & Switcher Styles */
+.format-view-pane {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.format-view-pane.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Switcher Button Hover and Active */
+.view-switcher .switcher-btn.active {
+  background: var(--gradient-gold) !important;
+  color: var(--gold-foreground) !important;
+  box-shadow: 0 4px 12px rgba(220, 164, 40, 0.35);
+}
+
+.view-switcher .switcher-btn:hover:not(.active) {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+
+/* Day Tabs Button Hover and Active */
+.schedule-tabs .tab-btn.active {
+  background: var(--gradient-blue) !important;
+  border: 1px solid rgba(5, 149, 206, 0.4) !important;
+  color: #fff !important;
+  box-shadow: 0 4px 15px rgba(5, 149, 206, 0.2);
+}
+
+.schedule-tabs .tab-btn:hover:not(.active) {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.04) !important;
+}
+
+/* Timeline specific styles */
+.schedule-timeline {
+  display: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.schedule-timeline.active {
+  display: block;
+  opacity: 1;
+}
+
+/* Custom styles for cards in timeline */
+.timeline-card {
+  background: rgba(10, 26, 85, 0.7) !important;
+  border: 1px solid rgba(255, 255, 255, 0.06) !important;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
+}
+
+.timeline-card:hover {
+  transform: translateY(-2px);
+  border-color: rgba(5, 149, 206, 0.4) !important;
+  box-shadow: 0 0 15px rgba(5, 149, 206, 0.15);
+}
+
+/* Recovery break specific */
+.recovery-card {
+  background: rgba(239, 68, 68, 0.02) !important;
+  border: 1px dashed rgba(239, 68, 68, 0.25) !important;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+/* Awards card specific */
+.awards-card {
+  background: rgba(220, 164, 40, 0.03) !important;
+  border: 1px solid rgba(220, 164, 40, 0.25) !important;
+  padding: 1rem 1.25rem;
+  border-radius: 0.75rem;
+}
+
+.awards-card:hover {
+  border-color: var(--gold) !important;
+  box-shadow: 0 0 15px rgba(220, 164, 40, 0.15);
+}
+
+/* final card highlight */
+.final-highlight-item .timeline-card {
+  border-color: var(--gold) !important;
+  background: linear-gradient(135deg, rgba(220, 164, 40, 0.08), rgba(10, 26, 85, 0.85)) !important;
+  box-shadow: 0 0 25px rgba(220, 164, 40, 0.15), 0 0 60px rgba(220, 164, 40, 0.05);
+}
+
+.final-highlight-item .timeline-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 35px rgba(220, 164, 40, 0.3), 0 0 80px rgba(220, 164, 40, 0.1);
+}
+
+/* Custom keyframe animations */
+@keyframes pulse-gold-glow {
+  0% { box-shadow: 0 0 0 0 rgba(220, 164, 40, 0.6); }
+  70% { box-shadow: 0 0 0 10px rgba(220, 164, 40, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(220, 164, 40, 0); }
+}
+
+.timeline-dot-gold-glow {
+  animation: pulse-gold-glow 2s infinite;
+}
+
+/* Media Queries for timeline view */
+@media (max-width: 640px) {
+  .timeline-meta-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

@@ -1,9 +1,10 @@
 // Constants
 const WHATSAPP_NUMBER = "918281610051";
-const TARGET = new Date("2026-07-06T09:00:00+05:30").getTime();
+const TARGET = new Date("2026-07-10T18:00:00+05:30").getTime();
 
 // DOM Ready
 document.addEventListener("DOMContentLoaded", () => {
+  const initialHash = window.location.hash;
   // Initialize Lucide Icons
   lucide.createIcons();
 
@@ -18,6 +19,7 @@ document.addEventListener("DOMContentLoaded", () => {
   initRegistrationForm();
   initScrollAnimations();
   initSmoothScroll();
+  initScheduleView(initialHash);
 });
 
 // 1. Header Scroll effect
@@ -432,5 +434,80 @@ function initSmoothScroll() {
   // Remove hash if page loads with one
   if (window.location.hash) {
     history.replaceState(null, "", window.location.pathname);
+  }
+}
+
+// 12. Daily Schedule Tabs and View Toggle
+function initScheduleView(initialHash) {
+  const btnBracket = document.getElementById("btn-view-bracket");
+  const btnSchedule = document.getElementById("btn-view-schedule");
+  const paneBracket = document.getElementById("view-pane-bracket");
+  const paneSchedule = document.getElementById("view-pane-schedule");
+
+  if (!btnBracket || !btnSchedule || !paneBracket || !paneSchedule) return;
+
+  const showBracket = () => {
+    btnBracket.classList.add("active");
+    btnSchedule.classList.remove("active");
+    paneBracket.classList.add("active");
+    paneSchedule.classList.remove("active");
+  };
+
+  const showSchedule = () => {
+    btnBracket.classList.remove("active");
+    btnSchedule.classList.add("active");
+    paneBracket.classList.remove("active");
+    paneSchedule.classList.add("active");
+    // Refresh lucide icons in the newly visible schedule container
+    lucide.createIcons();
+  };
+
+  btnBracket.addEventListener("click", showBracket);
+  btnSchedule.addEventListener("click", showSchedule);
+
+  // Handle day tabs switching
+  const tabButtons = document.querySelectorAll(".schedule-tabs .tab-btn");
+  const timelines = document.querySelectorAll(".schedule-timeline");
+
+  tabButtons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      const day = btn.getAttribute("data-day");
+      
+      // Remove active from all tabs
+      tabButtons.forEach(b => {
+        b.classList.remove("active");
+        b.style.background = "none";
+        b.style.color = "rgba(255,255,255,0.6)";
+        b.style.border = "none";
+        b.style.boxShadow = "none";
+      });
+      // Add active to clicked tab
+      btn.classList.add("active");
+      // Apply active inline styles since styles are embedded
+      btn.style.background = "var(--gradient-blue)";
+      btn.style.border = "1px solid rgba(5, 149, 206, 0.4)";
+      btn.style.color = "#fff";
+      btn.style.boxShadow = "0 4px 15px rgba(5, 149, 206, 0.2)";
+
+      // Hide all timelines
+      timelines.forEach(tl => tl.classList.remove("active"));
+      // Show active timeline
+      const activeTimeline = document.getElementById(`timeline-${day}`);
+      if (activeTimeline) {
+        activeTimeline.classList.add("active");
+      }
+    });
+  });
+
+  // Listen for clicks on links pointing to #schedule to auto-switch view
+  document.querySelectorAll('a[href="#schedule"]').forEach(link => {
+    link.addEventListener("click", (e) => {
+      showSchedule();
+    });
+  });
+  
+  // Auto-show schedule if hash was #schedule on page load
+  if (initialHash === "#schedule") {
+    showSchedule();
   }
 }
