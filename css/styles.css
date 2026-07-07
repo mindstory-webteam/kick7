@@ -2528,9 +2528,101 @@ footer {
 }
 
 /* Media Queries for timeline view */
+@media (max-width: 1023px) {
+  /* Hide switcher and bracket view on tablet/mobile screens */
+  .view-switcher-wrap {
+    display: none !important;
+  }
+  #view-pane-bracket {
+    display: none !important;
+  }
+  /* Force daily schedule view to be active and visible */
+  #view-pane-schedule {
+    display: block !important;
+    opacity: 1 !important;
+  }
+}
+
 @media (max-width: 640px) {
   .timeline-meta-bar {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* Adjust schedule container and items padding for small screens */
+  .schedule-timeline-container {
+    padding: 0 0.25rem !important;
+  }
+  
+  .timeline-items {
+    padding-left: 1.15rem !important;
+  }
+  
+  /* Align timeline dots to the top of cards instead of 50% height when they wrap */
+  .timeline-item .timeline-dot {
+    left: calc(-1.15rem - 6px) !important;
+    top: 1.5rem !important;
+    transform: none !important;
+  }
+  
+  .timeline-item .timeline-dot-gold {
+    left: calc(-1.15rem - 7px) !important;
+    top: 1.5rem !important;
+    transform: none !important;
+  }
+
+  .timeline-item .timeline-dot-gold-glow {
+    left: calc(-1.15rem - 9px) !important;
+    top: 1.45rem !important;
+    transform: none !important;
+  }
+  
+  .timeline-item .timeline-dot-gap {
+    left: calc(-1.15rem - 4px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  .timeline-item .timeline-dot-recovery {
+    left: calc(-1.15rem - 5px) !important;
+    top: 50% !important;
+    transform: translateY(-50%) !important;
+  }
+
+  /* Force match cards to stack as columns so text doesn't overflow or wrap uglily */
+  .timeline-card {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 0.5rem !important;
+    padding: 0.85rem 1rem !important;
+  }
+  
+  /* Put the match badge and teams group in one block, time right-aligned or on separate row */
+  .timeline-card > div:first-child {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    width: 100%;
+  }
+
+  .timeline-card .schedule-teams {
+    font-size: 0.95rem !important;
+  }
+  
+  .timeline-card > div:last-child {
+    align-self: flex-end !important;
+    margin-top: 0.15rem !important;
+    font-size: 0.75rem !important;
+  }
+
+  /* Make recovery & awards text size mobile friendly */
+  .recovery-card, .awards-card {
+    padding: 0.75rem 1rem !important;
+  }
+
+  .recovery-card span, .awards-card span {
+    font-size: 0.75rem !important;
   }
 }
