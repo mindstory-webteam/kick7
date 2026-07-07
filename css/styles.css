@@ -2626,3 +2626,44 @@ footer {
     font-size: 0.75rem !important;
   }
 }
+
+/* Mobile spacing optimizations for screens <= 480px */
+@media (max-width: 480px) {
+  /* Section padding reduction */
+  .section {
+    padding: 1.5rem 0.85rem !important;
+  }
+  
+  .header-inner {
+    padding: 0 0.85rem !important;
+  }
+  
+  /* Form padding reduction */
+  #registration-form {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  .form-grid {
+    gap: 1rem !important;
+  }
+
+  /* Reduce gap in registration-grid */
+  .register-grid {
+    gap: 1.5rem !important;
+  }
+
+  /* Side cards padding reduction */
+  .register-side-card {
+    padding: 1rem 0.85rem !important;
+  }
+  
+  /* Info and why cards padding reduction */
+  .info-card, .why-card {
+    padding: 1.25rem 0.85rem !important;
+  }
+
+  /* Section headers spacing on mobile */
+  .section-title-block {
+    margin-bottom: 2rem !important;
+  }
+}
